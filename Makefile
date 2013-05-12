@@ -21,6 +21,15 @@ install: $(HOME)/.bash_aliases $(HOME)/.gitconfig $(HOME)/.gitignore $(HOME)/.pi
 	@echo "Installed"
 	@git submodule init && git submodule update
 
+$(HOME)/.vim:
+	@echo
+	@echo " Install VIM files."
+	rm -rf $(HOME)/.vim
+	git clone --recursive git@github.com:7kfpun/.vim.git $(HOME)/.vim
+	cd $(HOME)/.vim
+	make all
+	make install
+
 $(HOME)/.bash_aliases:
 	ln -s $(CURDIR)/configs/bash/.bash_aliases $(HOME)/.
 
@@ -48,6 +57,8 @@ clean_vim:
 uninstall:
 	@echo
 	@echo "Clean your HOME directory"
+	rm -rf $(HOME)/.vim
+	rm -rf $(HOME)/.vimrc
 	rm -rf $(HOME)/.bash_aliases
 	rm -rf $(HOME)/.gitconfig
 	rm -rf $(HOME)/.gitignore
