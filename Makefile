@@ -3,6 +3,13 @@
 BINDIR=$(CURDIR)/bin
 UTILSDIR=$(CURDIR)/utils
 
+USERNAME := "kf"
+EMAIL := "7kfpun@gmail.com"
+
+__GIT_NAME__ := $(USERNAME)
+__GIT_EMAIL__ := $(EMAIL)
+
+
 .PHONY: help
 # target: help - Display callable targets
 help:
@@ -18,7 +25,9 @@ autoenv:
 	@echo 'source ~/scripts/.autoenv/activate.sh' >> ~/.bashrc
 
 $(HOME)/.gitconfig:
-	ln -s $(CURDIR)/configs/.gitconfig $(HOME)/.
+	cat $(CURDIR)/dotfiles/.gitconfig \
+	    | sed "s/__GIT_NAME__/"$(__GIT_NAME__)"/g" \
+	    | sed "s/__GIT_EMAIL__/"$(__GIT_EMAIL__)"/g" > $(HOME)/.gitconfig
 
 $(HOME)/.gitignore:
         ln -s $(CURDIR)/configs/.gitignore $(HOME)/.
@@ -33,12 +42,3 @@ uninstall:
 	@echo "Clean your HOME directory"
 	rm -rf $(HOME)/.gitconfig
 	rm -rf $(HOME)/.pip
-
-.PHONY: apt-get
-# target: install - apt-get installation
-apt-get:
-	@echo
-	@echo "apt-get installation"
-	sudo apt-get update
-	sudo apt-get upgrade
-	sudo apt-get install -y xclip git python-pip python-virtualenv
