@@ -5,6 +5,15 @@ nc='\e[0m';
 
 print () { echo; echo -e  ${cyan} ${1}${nc}; }
 
+print 'Update system.'
+sudo add-apt-repository ppa:richarvey/nodester
+sudo apt-get update -y
+
+for I in "curl"; do
+    print "Apt-get install ${I}"
+    sudo apt-get install $I
+done
+
 for I in "nginx supervisor"; do
     print "Upgrade ${I}"
     sudo pip install --upgrade $I
