@@ -41,6 +41,7 @@
     a = add
     s = status -sb
     b = branch -a
+    mb = branch -m
     mg = merge --no-ff
     ph = push --tags
        
