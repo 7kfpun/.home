@@ -1,0 +1,16 @@
+#python specific
+*.py[co]
+
+## generic files to ignore
+.env
+*~
+*.log
+*.sqlite3
+*.lock
+*.DS_Store
+*.swp
+*.out
+*.old
+*.bak
+*.egg
+*.egg-info
