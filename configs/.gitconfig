@@ -1,0 +1,76 @@
+﻿[user]
+    name = kf
+    email = 7kfpun@gmail.com
+    editor = vim
+
+[core]
+    autocrlf = input
+    excludesfile = ~/.home/configs/.gitignore
+    filemode=true
+    pager = /usr/bin/less
+    sharedRepository=group
+    whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+
+[merge]
+    tool = lvimdiff
+
+[mergetool "lvimdiff"]
+    cmd = "vim -d -c 'wincmd J' $MERGED $LOCAL $BASE $REMOTE"
+    keepbackup = false
+
+[diff]
+    tool = vimdiff
+
+[color]
+    ui = auto
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
+
+[push]
+    default = current
+    ; default = matching
+
+[alias]
+    ; Show aliases
+    alias = !git config --get-regexp alias | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\\1\\t => \\2/' | sort
+
+    ; Common abbr
+    co = checkout
+    cm = commit
+    a = add
+    s = status -sb
+    b = branch -a
+    mg = merge --no-ff
+    ph = push --tags
+       
+    ; View logs and diff
+    hist = log --pretty=format:'%Cred%h%Creset %ad | %Cgreen%s%d%Creset [%an]' --graph --date=short
+    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    d = diff --word-diff
+    dc = diff --cached
+
+    ; Git flow support
+    hotfix = flow hotfix
+    feature = flow feature
+    release = flow release
+   
+    ; Undo
+    amend = commit --amend -C HEAD
+    undo = reset --soft HEAD^
+
+[github]
+    user = 7kfpun
+
+[branch "master"]
+    remote = origin
+    merge = refs/heads/master
+
+[branch "develop"]
+    remote = origin
+    merge = refs/heads/develop
+
+[help]
+    autocorrect = 1
