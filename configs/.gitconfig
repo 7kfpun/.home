@@ -1,7 +1,6 @@
-﻿[user]
-    name = kf
-    email = 7kfpun@gmail.com
-    editor = vim
+[user]
+    name = "__GIT_NAME__"
+    email = __GIT_EMAIL__
 
 [core]
     autocrlf = input
