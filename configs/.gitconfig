@@ -38,7 +38,7 @@
 
     ; Common abbr
     co = checkout
-    cm = commit
+    cm = commit -m
     a = add
     s = status -sb
     b = branch -a
