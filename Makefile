@@ -25,12 +25,12 @@ autoenv:
 	@echo 'source ~/scripts/.autoenv/activate.sh' >> ~/.bashrc
 
 $(HOME)/.gitconfig:
-	cat $(CURDIR)/dotfiles/.gitconfig \
+	cat $(CURDIR)/configs/.gitconfig \
 	    | sed "s/__GIT_NAME__/"$(__GIT_NAME__)"/g" \
 	    | sed "s/__GIT_EMAIL__/"$(__GIT_EMAIL__)"/g" > $(HOME)/.gitconfig
 
 $(HOME)/.gitignore:
-        ln -s $(CURDIR)/configs/.gitignore $(HOME)/.
+	ln -s $(CURDIR)/configs/.gitignore $(HOME)/.
 
 $(HOME)/.pip:
 	ln -s $(CURDIR)/configs/.pip $(HOME)/.
@@ -49,4 +49,5 @@ uninstall:
 	@echo
 	@echo "Clean your HOME directory"
 	rm -rf $(HOME)/.gitconfig
+	rm -rf $(HOME)/.gitignore
 	rm -rf $(HOME)/.pip
