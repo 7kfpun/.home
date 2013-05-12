@@ -35,6 +35,14 @@ $(HOME)/.gitignore:
 $(HOME)/.pip:
 	ln -s $(CURDIR)/configs/.pip $(HOME)/.
 
+.PHONY: clean_vim
+# target: remove vin configuration
+clean_vim:
+	@echo
+	@echo " Clean VIM files."
+	rm -rf $(HOME)/.vim
+	rm -rf $(HOME)/.vimrc
+
 .PHONY: uninstall
 # target: uninstall - Clean installation
 uninstall:
