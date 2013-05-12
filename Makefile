@@ -17,12 +17,12 @@ help:
 
 .PHONY: install
 # target: install - Install my dot files
-install: autoenv $(HOME)/.gitconfig $(HOME)/.pip
+install: $(HOME)/.bash_aliases $(HOME)/.gitconfig $(HOME)/.gitignore $(HOME)/.pip
 	@echo "Installed"
 	@git submodule init && git submodule update
 
-autoenv:
-	@echo 'source ~/scripts/.autoenv/activate.sh' >> ~/.bashrc
+$(HOME)/.bash_aliases:
+	ln -s $(CURDIR)/configs/bash/.bash_aliases $(HOME)/.
 
 $(HOME)/.gitconfig:
 	cat $(CURDIR)/configs/.gitconfig \
@@ -48,6 +48,7 @@ clean_vim:
 uninstall:
 	@echo
 	@echo "Clean your HOME directory"
+	rm -rf $(HOME)/.bash_aliases
 	rm -rf $(HOME)/.gitconfig
 	rm -rf $(HOME)/.gitignore
 	rm -rf $(HOME)/.pip
