@@ -17,7 +17,8 @@ help:
 
 .PHONY: install
 # target: install - Install my dot files
-install: $(HOME)/.bash_aliases $(HOME)/.gitconfig $(HOME)/.gitignore $(HOME)/.pip
+install: $(HOME)/.bash_aliases $(HOME)/.gitconfig $(HOME)/.gitignore $(HOME)/.pip \
+    $(HOME)/.pylintrc
 	@echo "Installed"
 	@git submodule init && git submodule update
 
@@ -44,6 +45,9 @@ $(HOME)/.gitignore:
 $(HOME)/.pip:
 	ln -s $(CURDIR)/configs/.pip $(HOME)/.
 
+$(HOME)/.pylintrc:
+	ln -s $(CURDIR)/configs/.pylintrc $(HOME)/.
+
 .PHONY: clean_vim
 # target: remove vin configuration
 clean_vim:
@@ -57,9 +61,11 @@ clean_vim:
 uninstall:
 	@echo
 	@echo "Clean your HOME directory"
-	rm -rf $(HOME)/.vim
-	rm -rf $(HOME)/.vimrc
 	rm -rf $(HOME)/.bash_aliases
 	rm -rf $(HOME)/.gitconfig
 	rm -rf $(HOME)/.gitignore
 	rm -rf $(HOME)/.pip
+	rm -rf $(HOME)/.pylintrc
+	rm -rf $(HOME)/.vim
+	rm -rf $(HOME)/.vimrc
+
