@@ -6,7 +6,7 @@ alias less='less -r'
 
 if [ "$TERM" != "dumb" ]; then
     export LS_OPTIONS='--color=auto --group-directories-first'
-    eval `dircolors $HOME/.home/configs/.dir_colors`
+    eval `dircolors $HOME/.home/configs/.dircolors`
 fi
 
 alias ls='ls $LS_OPTIONS -Fh' 
