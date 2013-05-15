@@ -9,12 +9,12 @@ print 'Update system.'
 sudo add-apt-repository ppa:richarvey/nodester
 sudo apt-get update -y
 
-for I in "curl"; do
+for I in "curl git git-buildpackage python-dev python-pip"; do
     print "Apt-get install ${I}"
     sudo apt-get install $I
 done
 
-for I in "nginx supervisor"; do
+for I in "nginx supervisor virtualenv"; do
     print "Upgrade ${I}"
     sudo pip install --upgrade $I
 done
