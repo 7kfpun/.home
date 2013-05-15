@@ -4,6 +4,7 @@
 
 [core]
     autocrlf = input
+    editor = vim
     excludesfile = ~/.home/configs/.gitignore
     filemode=true
     pager = /usr/bin/less
@@ -34,6 +35,13 @@
 [alias]
     ; Show aliases
     alias = !git config --get-regexp alias | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\\1\\t => \\2/' | sort
+
+    ; Quickly add a file/dir to .gitignore
+    ignore=!([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
+
+    ; Switch branch
+    master = checkout master
+    develop = checkout develop
 
     ; Common abbr
     co = checkout
@@ -74,7 +82,7 @@
     merge = refs/heads/develop
 
 [fetch]
-    recurseSubmodules = true
+    ; recurseSubmodules = true
 
 [help]
     autocorrect = 1
