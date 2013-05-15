@@ -39,7 +39,7 @@ $(HOME)/.bash_aliases:
 	ln -s $(CURDIR)/configs/bash/.bash_aliases $(HOME)/.
 
 $(HOME)/.dircolors:
-	wget -O $(CURDIR)/configs/.dircolors "https://raw.github.com/trapd00r/LS_COLORS/master/LS_COLORS"
+	wget -O $(CURDIR)/configs/bash/.dir_colors "https://raw.github.com/trapd00r/LS_COLORS/master/LS_COLORS"
 
 $(HOME)/.gitconfig:
 	cat $(CURDIR)/configs/.gitconfig \
