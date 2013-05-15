@@ -17,7 +17,7 @@ help:
 
 .PHONY: install
 # target: install - Install my dot files
-install: $(HOME)/.bashrc $(HOME)/.bash_aliases $(HOME)/dircolors \
+install: $(HOME)/.bashrc $(HOME)/.bash_aliases $(HOME)/.dircolors \
     $(HOME)/.gitconfig $(HOME)/.gitignore \
     $(HOME)/.pip $(HOME)/.pylintrc
 	@echo "Installed"
@@ -38,8 +38,8 @@ $(HOME)/.bashrc:
 $(HOME)/.bash_aliases:
 	ln -s $(CURDIR)/configs/bash/.bash_aliases $(HOME)/.
 
-$(HOME)/dircolors:
-	wget -O $(CURDIR)/configs/dircolors "https://raw.github.com/trapd00r/LS_COLORS/master/LS_COLORS"
+$(HOME)/.dircolors:
+	wget -O $(CURDIR)/configs/.dircolors "https://raw.github.com/trapd00r/LS_COLORS/master/LS_COLORS"
 
 $(HOME)/.gitconfig:
 	cat $(CURDIR)/configs/.gitconfig \
