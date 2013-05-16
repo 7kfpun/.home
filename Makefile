@@ -15,6 +15,10 @@ __GIT_EMAIL__ := $(EMAIL)
 help:
 	@egrep "^# target:" [Mm]akefile
 
+all:
+	@git submodule update --init --recursive
+	@git submodule foreach --recursive git pull origin master
+
 .PHONY: install
 # target: install - Install my dot files
 install: $(HOME)/.bashrc $(HOME)/.bash_aliases $(HOME)/.dircolors \
@@ -27,6 +31,7 @@ $(HOME)/.vim:
 	@echo
 	@echo " Install VIM files."
 	rm -rf $(HOME)/.vim
+	rm -rf $(HOME)/.vimrc
 	git clone --recursive git@github.com:7kfpun/.vim.git $(HOME)/.vim
 	cd $(HOME)/.vim
 	make all
