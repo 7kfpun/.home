@@ -60,7 +60,7 @@ $(HOME)/.vim:
 	@echo " Install VIM files."
 	rm -rf $(HOME)/.vim
 	rm -rf $(HOME)/.vimrc
-	git clone --recursive git@github.com:7kfpun/.vim.git $(HOME)/.vim
+	git clone --recursive https://github.com/7kfpun/.vim.git $(HOME)/.vim
 	cd $(HOME)/.vim
 	make all
 	make install
