@@ -27,16 +27,6 @@ install: $(HOME)/.bashrc $(HOME)/.bash_aliases $(HOME)/.dircolors \
 	@echo "Installed"
 	@git submodule init && git submodule update
 
-$(HOME)/.vim:
-	@echo
-	@echo " Install VIM files."
-	rm -rf $(HOME)/.vim
-	rm -rf $(HOME)/.vimrc
-	git clone --recursive git@github.com:7kfpun/.vim.git $(HOME)/.vim
-	cd $(HOME)/.vim
-	make all
-	make install
-
 $(HOME)/.bashrc:
 	ln -s $(CURDIR)/configs/bash/.bashrc $(HOME)/.
 
@@ -60,6 +50,21 @@ $(HOME)/.pip:
 $(HOME)/.pylintrc:
 	ln -s $(CURDIR)/configs/.pylintrc $(HOME)/.
 
+.PHONY: vim
+target: install vim configuration
+vim: $(HOME)/.vim
+	@echo "Installing vim configuration"
+	
+$(HOME)/.vim:
+	@echo
+	@echo " Install VIM files."
+	rm -rf $(HOME)/.vim
+	rm -rf $(HOME)/.vimrc
+	git clone --recursive git@github.com:7kfpun/.vim.git $(HOME)/.vim
+	cd $(HOME)/.vim
+	make all
+	make install
+										
 .PHONY: clean_vim
 # target: remove vin configuration
 clean_vim:
