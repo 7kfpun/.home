@@ -21,11 +21,14 @@ all:
 
 .PHONY: install
 # target: install - Install my dot files
-install: $(HOME)/.bashrc $(HOME)/.bash_aliases $(HOME)/.dircolors \
+install: $(HOME)/.bash_profile $(HOME)/.bashrc $(HOME)/.bash_aliases $(HOME)/.dircolors \
     $(HOME)/.gitconfig $(HOME)/.gitignore \
     $(HOME)/.pip $(HOME)/.pylintrc
 	@echo "Installed"
 	@git submodule init && git submodule update
+
+$(HOME)/.bash_profile:
+	ln -s $(CURDIR)/configs/bash/.bash_profile $(HOME)/.
 
 $(HOME)/.bashrc:
 	ln -s $(CURDIR)/configs/bash/.bashrc $(HOME)/.
@@ -79,6 +82,7 @@ uninstall:
 	@echo
 	@echo "Clean your HOME directory"
 	rm -rf $(HOME)/.bash_aliases
+	rm -rf $(HOME)/.bash_profile
 	rm -rf $(HOME)/.bashrc
 	rm -rf $(HOME)/.gitconfig
 	rm -rf $(HOME)/.gitignore
