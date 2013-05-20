@@ -1,6 +1,6 @@
 [user]
     name = "__GIT_NAME__"
-    email = __GIT_EMAIL__
+    email = "__GIT_EMAIL__"
 
 [core]
     autocrlf = input
@@ -42,6 +42,9 @@
     ; Switch branch
     master = checkout master
     develop = checkout develop
+
+    ; Fetch origin
+    fo = fetch origin
 
     ; Common abbr
     co = checkout
