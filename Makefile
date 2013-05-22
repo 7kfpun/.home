@@ -22,11 +22,12 @@ all:
 .PHONY: ssh-keygen
 # target: ssh-keygen - Generating a ssh key
 ssh-keygen:
-	@mkdir ~/.ssh
-	@echo "# Creates a new ssh key, using the provided email as a label"
-	@ssh-keygen -t rsa -C "$(EMAIL)"
-	@xclip -sel clip < ~/.ssh/id_rsa.pub
-	@echo "# Copies the contents of the id_rsa.pub file to your clipboard"
+	mkdir -p ~/.ssh
+	@if [ ! -f ~/.ssh/id_rsa.pub ] ; \
+	then \
+     		ssh-keygen -t rsa -C $(EMAIL) -f ~/.ssh/id_rsa -N "" ; \
+	fi;
+	xclip -sel clip < ~/.ssh/id_rsa.pub
 
 .PHONY: install
 # target: install - Install my dot files
