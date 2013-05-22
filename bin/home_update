@@ -9,7 +9,7 @@ print 'Update system.'
 sudo add-apt-repository ppa:richarvey/nodester
 sudo apt-get update -y
 
-for I in "vim guake skype xclip virtualbox-qt openjdk-7-jdk curl git git-buildpackage python-dev python-pip"; do
+for I in "vim guake skype xclip virtualbox-qt openjdk-7-jdk curl git git-buildpackage python-dev python-pip nfs-kernel-server"; do
     print "Apt-get install -y ${I}"
     sudo apt-get install -y $I
 done
