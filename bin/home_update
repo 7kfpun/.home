@@ -9,7 +9,7 @@ print 'Update system.'
 sudo add-apt-repository ppa:richarvey/nodester
 sudo apt-get update -y
 
-for I in "vim guake skype xclip openjdk-7-jdk curl git git-buildpackage python-dev python-pip"; do
+for I in "vim guake skype xclip virtualbox-qt openjdk-7-jdk curl git git-buildpackage python-dev python-pip"; do
     print "Apt-get install -y ${I}"
     sudo apt-get install -y $I
 done
@@ -27,8 +27,12 @@ print "Install Google-chrome"
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
 sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list'
 
-sudo apt-get update 
-sudo apt-get install -y dropbox google-chrome-stable
+print "Install Ubuntu Tweak"
+'' | sudo add-apt-repository ppa:tualatrix/ppa
+
+sudo apt-get update
+sudo apt-get install -y dropbox google-chrome-stable ubuntu-tweak
+cd /etc/apt/sources.list.d && rm -f dropbox.list google.list tualatrix-ppa*.list
 
 cd ~/.vim && git pull
 cd ~/.home && git pull
