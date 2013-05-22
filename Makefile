@@ -30,6 +30,11 @@ ssh-keygen:
 	@xclip -sel clip < ~/.ssh/id_rsa.pub
 	@cat ~/.ssh/id_rsa.pub
 
+.PHONY: gpg-keygen
+# target: gpg-keygen - Generating a GPG key
+gpg-keygen:
+	@gpg --gen-key
+
 .PHONY: install
 # target: install - Install my dot files
 install: $(HOME)/.bash_profile $(HOME)/.bashrc $(HOME)/.bash_aliases $(HOME)/.dircolors \
