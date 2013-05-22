@@ -19,6 +19,15 @@ all:
 	@git submodule update --init --recursive
 	@git submodule foreach --recursive git pull origin master
 
+.PHONY: ssh-keygen
+# target: ssh-keygen - Generating a ssh key
+ssh-keygen:
+	@mkdir ~/.ssh
+	@echo "# Creates a new ssh key, using the provided email as a label"
+	@ssh-keygen -t rsa -C "$(EMAIL)"
+	@xclip -sel clip < ~/.ssh/id_rsa.pub
+	@echo "# Copies the contents of the id_rsa.pub file to your clipboard"
+
 .PHONY: install
 # target: install - Install my dot files
 install: $(HOME)/.bash_profile $(HOME)/.bashrc $(HOME)/.bash_aliases $(HOME)/.dircolors \
