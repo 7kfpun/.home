@@ -19,6 +19,9 @@ for I in "supervisor virtualenv"; do
     sudo pip install --upgrade $I
 done
 
+print "Install Vagrant"
+sudo dpkg -i debs/vagrant_1.2.2_x86_64.deb
+
 print "Install Dropbox"
 sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
 sudo sh -c 'echo "deb http://linux.dropbox.com/ubuntu/ raring main" > /etc/apt/sources.list.d/dropbox.list'
