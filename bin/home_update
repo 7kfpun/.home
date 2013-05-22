@@ -9,15 +9,26 @@ print 'Update system.'
 sudo add-apt-repository ppa:richarvey/nodester
 sudo apt-get update -y
 
-for I in "curl git git-buildpackage python-dev python-pip"; do
-    print "Apt-get install ${I}"
-    sudo apt-get install $I
+for I in "vim guake skype xclip openjdk-7-jdk curl git git-buildpackage python-dev python-pip"; do
+    print "Apt-get install -y ${I}"
+    sudo apt-get install -y $I
 done
 
-for I in "nginx supervisor virtualenv"; do
+for I in "supervisor virtualenv"; do
     print "Upgrade ${I}"
     sudo pip install --upgrade $I
 done
+
+print "Install Dropbox"
+sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
+sudo sh -c 'echo "deb http://linux.dropbox.com/ubuntu/ raring main" > /etc/apt/sources.list.d/dropbox.list'
+
+print "Install Google-chrome"
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
+sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list'
+
+sudo apt-get update 
+sudo apt-get install -y dropbox google-chrome-stable
 
 cd ~/.vim && git pull
 cd ~/.home && git pull
