@@ -22,12 +22,13 @@ all:
 .PHONY: ssh-keygen
 # target: ssh-keygen - Generating a ssh key
 ssh-keygen:
-	mkdir -p ~/.ssh
+	@mkdir -p ~/.ssh
 	@if [ ! -f ~/.ssh/id_rsa.pub ] ; \
 	then \
      		ssh-keygen -t rsa -C $(EMAIL) -f ~/.ssh/id_rsa -N "" ; \
 	fi;
-	xclip -sel clip < ~/.ssh/id_rsa.pub
+	@xclip -sel clip < ~/.ssh/id_rsa.pub
+	@cat ~/.ssh/id_rsa.pub
 
 .PHONY: install
 # target: install - Install my dot files
@@ -73,8 +74,8 @@ $(HOME)/.vim:
 	@echo " Install VIM files."
 	rm -rf $(HOME)/.vim
 	rm -rf $(HOME)/.vimrc
-	git clone --recursive https://github.com/7kfpun/.vim.git $(HOME)/.vim
-	cd $(HOME)/.vim
+	@git clone --recursive https://github.com/7kfpun/.vim.git $(HOME)/.vim
+	@cd $(HOME)/.vim
 	make all
 	make install
 										
