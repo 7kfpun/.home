@@ -19,6 +19,9 @@ for I in "supervisor virtualenv"; do
     sudo pip install --upgrade $I
 done
 
+# 32bit shared libraries for Android
+sudo apt-get install -y ia32-libs
+
 print "Install Vagrant"
 sudo dpkg -i debs/vagrant_1.2.2_x86_64.deb
 
