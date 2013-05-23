@@ -55,8 +55,9 @@
        
     ; View logs and diff
     hist = log --pretty=format:'%Cred%h%Creset %ad | %Cgreen%s%d%Creset [%an]' --graph --date=short
-    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
-    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn#%cE]" --decorate
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn#%cE]" --decorate --numstat
+    lg = log -p --stat
     d = diff --word-diff
     dc = diff --cached
     tree = log --graph --decorate --pretty=oneline --abbrev-commit
