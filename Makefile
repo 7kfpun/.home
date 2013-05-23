@@ -37,7 +37,8 @@ gpg-keygen:
 
 .PHONY: install
 # target: install - Install my dot files
-install: uninstall $(HOME)/.bash_profile $(HOME)/.bashrc $(HOME)/.bash_aliases $(HOME)/.dircolors \
+install: uninstall $(HOME)/.bash_profile $(HOME)/.bashrc $(HOME)/.bash_aliases \
+    $(HOME)/.bash_login $(HOME)/.dircolors \
     $(HOME)/.gitconfig $(HOME)/.gitignore \
     $(HOME)/.pip $(HOME)/.pylintrc
 	@echo "Installed"
@@ -51,6 +52,9 @@ $(HOME)/.bashrc:
 
 $(HOME)/.bash_aliases:
 	ln -s $(CURDIR)/configs/bash/.bash_aliases $(HOME)/.
+
+$(HOME)/.bash_login:
+	ln -s $(CURDIR)/dotfiles/bash/.bash_login $(HOME)/.
 
 $(HOME)/.dircolors:
 	wget -O $(CURDIR)/configs/bash/.dir_colors "https://raw.github.com/trapd00r/LS_COLORS/master/LS_COLORS"
@@ -99,6 +103,7 @@ uninstall:
 	@echo
 	@echo "Clean your HOME directory"
 	rm -rf $(HOME)/.bash_aliases
+	rm -rf $(HOME)/.bash_login
 	rm -rf $(HOME)/.bash_profile
 	rm -rf $(HOME)/.bashrc
 	rm -rf $(HOME)/.gitconfig
