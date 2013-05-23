@@ -1,0 +1,71 @@
+function get_free_disk_space_info {
+    df -h . | tail -n+2 | awk '{print "Used: "$3"/"$2" ("$5") Free: "$4}'
+}
+
+function get_system_core_name_ubuntu {
+    echo $(lsb_release -dc | cut -f2 | xargs echo)" ("$(uname -o)" "$(uname -r)" "$(uname -m)")"
+}
+
+function get_system_core_name_macos {
+    echo $(sw_vers -productName)" "$(sw_vers -productVersion)" ("$(uname -rsm)")"
+}
+
+function get_free_memory_info_ubuntu {
+    free -m | grep "Mem:" | awk '{print "Used: "$3"Mb/"$2"Mb ("int($3/$2*100)"%) Free: "$4"Mb"}'
+}
+
+function get_free_memory_info_macos {
+    # total_memory=$(ps -caxm -orss,comm | awk 'BEGIN{mem=0}{mem+=$1}END{print mem/1024}')
+    total_memory=$(sysctl hw.memsize | awk '{print $2/(1024^2)}')
+    # free_memory=$(vm_stat | grep "Pages free:" | awk '{print $3 * 4096 / (1024^2)}')
+    free_memory=$(vm_stat | grep "Pages free:" | awk '{print $3 * 4 / 1024}')
+    echo | awk -v fm=$free_memory -v tm=$total_memory '{print "Used: "tm-fm"Mb/"tm"Mb ("int((tm-fm)/tm*100)"%) Free: "fm"Mb"}'
+}
+
+function get_ip_address_ubuntu {
+    ip addr show eth0 | grep "inet " | awk '{print $2}'
+}
+
+function get_ip_address {
+    if [[ $(uname) == "Linux" ]]; then
+        get_ip_address_ubuntu
+    elif [[ $(uname) == "Darwin" ]]; then
+        echo ""
+    else
+        echo ""
+    fi
+}
+
+function get_system_core_name {
+    if [[ $(uname) == "Linux" ]]; then
+        get_system_core_name_ubuntu
+    elif [[ $(uname) == "Darwin" ]]; then
+        get_system_core_name_macos
+    else
+        echo ""
+    fi
+}
+
+function get_free_memory_info {
+    if [[ $(uname) == "Linux" ]]; then
+        get_free_memory_info_ubuntu
+    elif [[ $(uname) == "Darwin" ]]; then
+        get_free_memory_info_macos
+    else
+        echo ""
+    fi
+}
+
+echo -e "\n"$(date)" | Bash "${BASH_VERSION%.*}" | Server IP: "$(get_ip_address)
+get_system_core_name
+echo -e "Uptime:"$(uptime)
+echo -e "Login users:\t"$(users)
+echo -e "Disk\t\t"$(get_free_disk_space_info)
+echo -e "Memory\t\t"$(get_free_memory_info)
+
+# cat /proc/cpuinfo | grep "model name" | cut -d:  -f2 | cut -d" " -f2- | uniq -c # ubuntu
+# sudo lshw # ubuntu show hardware info
+# vmstat # also memory stat ubuntu
+# system_profiler # mac hardware overview
+# sysctl -a # mac low level overview
+
