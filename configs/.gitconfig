@@ -50,6 +50,7 @@
     s = status -sb
     b = branch -a
     mb = branch -m
+    Db = branch -D
     mg = merge --no-ff
     ph = push --tags
        
