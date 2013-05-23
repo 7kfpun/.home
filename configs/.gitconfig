@@ -1,6 +1,6 @@
 [user]
-    name = "__GIT_NAME__"
-    email = "__GIT_EMAIL__"
+    name = "Pun Ka Fai"
+    email = "jp@multichannel.net"
 
 [core]
     autocrlf = input
@@ -43,9 +43,6 @@
     master = checkout master
     develop = checkout develop
 
-    ; Fetch origin
-    fo = fetch origin
-
     ; Common abbr
     co = checkout
     cm = commit -m
@@ -73,9 +70,6 @@
     amend = commit --amend -C HEAD
     undo = reset --soft HEAD^
 
-[github]
-    user = 7kfpun
-
 [branch "master"]
     remote = origin
     merge = refs/heads/master
@@ -89,3 +83,15 @@
 
 [help]
     autocorrect = 1
+
+[gitflow "branch"]
+    master = master
+    develop = develop
+
+[gitflow "prefix"]
+    feature = feature/
+    release = release/
+    hotfix = hotfix/
+    support = support/
+    versiontag =
+
