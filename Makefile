@@ -37,7 +37,7 @@ gpg-keygen:
 
 .PHONY: install
 # target: install - Install my dot files
-install: $(HOME)/.bash_profile $(HOME)/.bashrc $(HOME)/.bash_aliases $(HOME)/.dircolors \
+install: uninstall $(HOME)/.bash_profile $(HOME)/.bashrc $(HOME)/.bash_aliases $(HOME)/.dircolors \
     $(HOME)/.gitconfig $(HOME)/.gitignore \
     $(HOME)/.pip $(HOME)/.pylintrc
 	@echo "Installed"
@@ -56,9 +56,10 @@ $(HOME)/.dircolors:
 	wget -O $(CURDIR)/configs/bash/.dir_colors "https://raw.github.com/trapd00r/LS_COLORS/master/LS_COLORS"
 
 $(HOME)/.gitconfig:
-	cat $(CURDIR)/configs/.gitconfig \
-	    | sed "s/__GIT_NAME__/"$(__GIT_NAME__)"/g" \
-	    | sed "s/__GIT_EMAIL__/"$(__GIT_EMAIL__)"/g" > $(HOME)/.gitconfig
+	$(CURDIR)/configs/.gitconfig \
+	    | sed "s/__GIT_NAME__/$(__GIT_NAME__)/g" \
+	    | sed "s/__GIT_EMAIL__/$(__GIT_EMAIL__)/g"
+	ln -s $(CURDIR)/configs/.gitconfig $(HOME)/.
 
 $(HOME)/.gitignore:
 	ln -s $(CURDIR)/configs/.gitignore $(HOME)/.
