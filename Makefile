@@ -5,6 +5,8 @@ UTILSDIR=$(CURDIR)/utils
 
 USERNAME := "kf"
 EMAIL := "7kfpun@gmail.com"
+# USERNAME := "Pun Ka Fai"
+# EMAIL := "jp@multichannel.net"
 
 __GIT_NAME__ := $(USERNAME)
 __GIT_EMAIL__ := $(EMAIL)
@@ -60,9 +62,9 @@ $(HOME)/.dircolors:
 	wget -O $(CURDIR)/configs/bash/.dir_colors "https://raw.github.com/trapd00r/LS_COLORS/master/LS_COLORS"
 
 $(HOME)/.gitconfig:
-	$(CURDIR)/configs/.gitconfig \
+	cat $(CURDIR)/configs/.git_config \
 	    | sed "s/__GIT_NAME__/$(__GIT_NAME__)/g" \
-	    | sed "s/__GIT_EMAIL__/$(__GIT_EMAIL__)/g"
+	    | sed "s/__GIT_EMAIL__/$(__GIT_EMAIL__)/g" > $(CURDIR)/configs/.gitconfig
 	ln -s $(CURDIR)/configs/.gitconfig $(HOME)/.
 
 $(HOME)/.gitignore:
@@ -108,6 +110,6 @@ uninstall:
 	rm -rf $(HOME)/.bashrc
 	rm -rf $(HOME)/.gitconfig
 	rm -rf $(HOME)/.gitignore
-	rm -rf $(HOME)/.pip
-	rm -rf $(HOME)/.pylintrc
+	# rm -rf $(HOME)/.pip
+	# rm -rf $(HOME)/.pylintrc
 
