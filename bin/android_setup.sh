@@ -11,5 +11,5 @@ mv /tmp/$android ~/android
 
 
 # 32bit shared libraries for Android
-sudo apt-get install -y ia32-libs
+sudo apt-get install -y ia32-libs openjdk-7-jdk 
 
