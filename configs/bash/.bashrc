@@ -12,5 +12,3 @@ fi
 
 export DEBFULLNAME="Pun Ka Fai"
 export DEBEMAIL="jp@multichannel.net"
-
-
