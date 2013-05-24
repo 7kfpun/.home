@@ -18,3 +18,12 @@ fi
 
 # Set Guake terminal keeps title unchanged
 [ -f "/usr/bin/guake" ] && gconftool-2 --set /apps/guake/general/use_vte_titles --type boolean false
+
+# bash enable ctrl-s for terminal
+vim()
+{
+    local STTYOPTS="$(stty --save)"
+    stty stop '' -ixoff
+    command vim "$@"
+    stty "$STTYOPTS"
+}
