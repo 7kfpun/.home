@@ -1,4 +1,5 @@
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# Use move to trash instead of remove
 rm="mv -t ~/.Trash"
 
 
@@ -12,3 +13,7 @@ fi
 
 export DEBFULLNAME="Pun Ka Fai"
 export DEBEMAIL="jp@multichannel.net"
+
+# Completion
+source $HOME/.home/bash_completion/vagrant-completion.bash
+
