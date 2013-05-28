@@ -16,4 +16,5 @@ export DEBEMAIL="jp@multichannel.net"
 
 # Completion
 source $HOME/.home/bash_completion/vagrant-completion.bash
-
+source $HOME/.home/bash_completion/pycompletion/pip-completion.bash
+source $HOME/.home/bash_completion/pycompletion/virtualenv-completion.bash
