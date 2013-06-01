@@ -44,16 +44,17 @@
     develop = checkout develop
 
     ; Common abbr
-    co = checkout
-    cm = commit -m
     a = add
     aa = add -A
-    s = status -sb
     b = branch -a
+    cm = commit -m
+    co = checkout
+    db = branch -D
+    fo = fetch origin
     mb = branch -m
-    Db = branch -D
     mg = merge --no-ff
     ph = push --tags
+    s = status -sb
        
     ; View logs and diff
     last = log -1 --stat
