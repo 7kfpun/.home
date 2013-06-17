@@ -14,6 +14,12 @@ fi
 export DEBFULLNAME="Pun Ka Fai"
 export DEBEMAIL="jp@multichannel.net"
 
+# color ls
+if [ "$TERM" != "dumb" ]; then
+    export LS_OPTIONS='--color=auto --group-directories-first'
+    eval `dircolors -b $HOME/.home/configs/bash/.dir_colors`
+fi
+
 # Completion
 source $HOME/.home/bash_completion/vagrant-completion.bash
 source $HOME/.home/bash_completion/pycompletion/pip-completion.bash
