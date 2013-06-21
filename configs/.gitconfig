@@ -53,6 +53,7 @@
     fo = fetch origin
     mb = branch -m
     mg = merge --no-ff
+    pd = pull origin develop
     ph = push --tags
     s = status -sb
        
