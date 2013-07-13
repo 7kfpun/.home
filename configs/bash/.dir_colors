@@ -1,8 +1,8 @@
 #                                    LS_COLORS
 # Maintainer: Magnus Woldrich <m@japh.se>
 #        URL: https://github.com/trapd00r/LS_COLORS
-#    Version: 0.252
-#    Updated: 2013-05-05 00:22:22
+#    Version: 0.254
+#    Updated: 2013-06-07 08:42:38
 #
 #   This is a collection of extension:color mappings, suitable to use as your
 #   LS_COLORS environment variable. Most of them use the extended color map,
@@ -53,11 +53,17 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .bat                  38;5;108
 .c                    38;5;110
 .cc                   38;5;24;1
+.ii                   38;5;24;1
 .cfg                  1
 .cl                   38;5;204;1
 .coffee               38;5;94;1
 .conf                 1
+.C                    38;5;24;1
+.cp                   38;5;24;1
 .cpp                  38;5;24;1
+.cxx                  38;5;24;1
+.c++                  38;5;24;1
+.ii                   38;5;24;1
 .cs                   38;5;74;1
 .css                  38;5;91
 .csv                  38;5;78
@@ -72,6 +78,17 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .gitignore            38;5;240
 .go                   38;5;36;1
 .h                    38;5;81
+.H                    38;5;81
+.hpp                  38;5;81
+.hxx                  38;5;81
+.h++                  38;5;81
+.tcc                  38;5;81
+.f                    38;5;81
+.for                  38;5;81
+.ftn                  38;5;81
+.s                    38;5;81
+.S                    38;5;81
+.sx                   38;5;81
 # interface file in GHC - https://github.com/trapd00r/LS_COLORS/pull/9
 .hi                   38;5;240
 .hs                   38;5;155;1
@@ -92,6 +109,7 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .m                    38;5;130;3
 .mht                  38;5;129
 .mm                   38;5;130;3
+.M                    38;5;130;3
 .map                  38;5;58;3
 .markdown             38;5;184
 .md                   38;5;184
@@ -247,7 +265,7 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .afm                  38;5;58
 .pfb                  38;5;58
 .pfm                  38;5;58
-.ttf                  48;5;1
+.ttf                  38;5;66
 .pcf                  38;5;65
 .psf                  38;5;64
 # backups, undo files, tempfiles
@@ -428,6 +446,23 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .gp3                  38;5;114
 .gp4                  38;5;115
 .tg                   38;5;99
+# tcpdump
+.pcap                 38;5;29
+.cap                  38;5;29
+.dmp                  38;5;29
+# systemd units
+# http://www.freedesktop.org/software/systemd/man/systemd.unit.html
+.service              38;5;81
+*@.service            38;5;45
+.socket               38;5;75
+.device               38;5;24
+.mount                38;5;115
+.automount            38;5;114
+.swap                 38;5;113
+.target               38;5;73
+.path                 38;5;116
+.timer                38;5;111
+.snapshot             38;5;139
 
 TERM Eterm
 TERM ansi
