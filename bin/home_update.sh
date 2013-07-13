@@ -35,12 +35,15 @@ install_home_tools () {
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - 
     sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list'
 
+    print "Install chromium-browser"
+    '' | add-apt-repository ppa:a-v-shkop/chromium
+    
     print "Install Ubuntu Tweak"
     '' | add-apt-repository ppa:tualatrix/ppa
 
     apt-get update -y
-    apt-get install -y dropbox google-chrome-stable ubuntu-tweak
-    cd /etc/apt/sources.list.d && rm -f dropbox.list google.list tualatrix-ppa*.list
+    apt-get install -y dropbox google-chrome-stable chromium-browser ubuntu-tweak
+    cd /etc/apt/sources.list.d && rm -f dropbox.list google.list tualatrix-ppa*.list *chromium*.list
 
     # cd ~/.vim && git pull
     # cd ~/.home && git pull
