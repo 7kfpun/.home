@@ -69,8 +69,8 @@ $(HOME)/.dircolors:
 
 $(HOME)/.gitconfig:
 	cat $(CURDIR)/configs/.git_config \
-	    | sed "s/__GIT_NAME__/$(__GIT_NAME__)/g" \
-	    | sed "s/__GIT_EMAIL__/$(__GIT_EMAIL__)/g" > $(HOME)/.gitconfig
+	    | sed "s/__GIT_NAME__/"$(__GIT_NAME__)"/g" \
+	    | sed "s/__GIT_EMAIL__/"$(__GIT_EMAIL__)"/g" > $(HOME)/.gitconfig
 
 $(HOME)/.gitignore:
 	ln -s $(CURDIR)/configs/.gitignore $(HOME)/.
