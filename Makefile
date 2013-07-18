@@ -5,9 +5,11 @@ UTILSDIR=$(CURDIR)/utils
 
 USERNAME := "kf"
 EMAIL := "7kfpun@gmail.com"
-# USERNAME := "Pun Ka Fai"
-# EMAIL := "jp@multichannel.net"
 
+__BASH_USERNAME__ := $(USERNAME)
+__BASH_EMAIL__ := $(EMAIL)
+__BASH_DEBFULLNAME__ := $(USERNAME)
+__BASH_DEBEMAIL__ := $(EMAIL)
 __GIT_NAME__ := $(USERNAME)
 __GIT_EMAIL__ := $(EMAIL)
 
@@ -50,7 +52,11 @@ $(HOME)/.bash_profile:
 	ln -s $(CURDIR)/configs/bash/.bash_profile $(HOME)/.
 
 $(HOME)/.bashrc:
-	ln -s $(CURDIR)/configs/bash/.bashrc $(HOME)/.
+	cat $(CURDIR)/configs/bash/.bashrc \
+	    | sed "s/__BASH_USERNAME__/"$(__BASH_USERNAME__)"/g" \
+	    | sed "s/__BASH_EMAIL__/"$(__BASH_EMAIL__)"/g" \
+	    | sed "s/__BASH_DEBFULLNAME__/"$(__BASH_DEBFULLNAME__)"/g" \
+	    | sed "s/__BASH_DEBEMAIL__/"$(__BASH_DEBEMAIL__)"/g" > $(HOME)/.bashrc
 
 $(HOME)/.bash_aliases:
 	ln -s $(CURDIR)/configs/bash/.bash_aliases $(HOME)/.
@@ -64,8 +70,7 @@ $(HOME)/.dircolors:
 $(HOME)/.gitconfig:
 	cat $(CURDIR)/configs/.git_config \
 	    | sed "s/__GIT_NAME__/$(__GIT_NAME__)/g" \
-	    | sed "s/__GIT_EMAIL__/$(__GIT_EMAIL__)/g" > $(CURDIR)/configs/.gitconfig
-	ln -s $(CURDIR)/configs/.gitconfig $(HOME)/.
+	    | sed "s/__GIT_EMAIL__/$(__GIT_EMAIL__)/g" > $(HOME)/.gitconfig
 
 $(HOME)/.gitignore:
 	ln -s $(CURDIR)/configs/.gitignore $(HOME)/.
@@ -110,6 +115,6 @@ uninstall:
 	rm -rf $(HOME)/.bashrc
 	rm -rf $(HOME)/.gitconfig
 	rm -rf $(HOME)/.gitignore
-	# rm -rf $(HOME)/.pip
-	# rm -rf $(HOME)/.pylintrc
+	rm -rf $(HOME)/.pip
+	rm -rf $(HOME)/.pylintrc
 
