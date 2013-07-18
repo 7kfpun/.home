@@ -11,8 +11,12 @@ if [ -f ~/.bash_aliases ]; then
         . ~/.bash_aliases
 fi
 
-export DEBFULLNAME="Pun Ka Fai"
-export DEBEMAIL="jp@multichannel.net"
+export DEBFULLNAME="__BASH_DEBFULLNAME__"
+export DEBEMAIL="__BASH_DEBEMAIL__"
+export USERNAME="__BASH_USERNAME__"
+export EMAIL="__BASH_EMAIL__"
+export HISTTIMEFORMAT="%h/%d - %H:%M:%S "
+export LANG="en_US.UTF-8"
 
 # color ls
 if [ "$TERM" != "dumb" ]; then
