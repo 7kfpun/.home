@@ -68,7 +68,7 @@ $(HOME)/.dircolors:
 	wget -O $(CURDIR)/configs/bash/.dir_colors "https://raw.github.com/trapd00r/LS_COLORS/master/LS_COLORS"
 
 $(HOME)/.gitconfig:
-	cat $(CURDIR)/configs/.git_config \
+	cat $(CURDIR)/configs/.gitconfig \
 	    | sed "s/__GIT_NAME__/"$(__GIT_NAME__)"/g" \
 	    | sed "s/__GIT_EMAIL__/"$(__GIT_EMAIL__)"/g" > $(HOME)/.gitconfig
 
