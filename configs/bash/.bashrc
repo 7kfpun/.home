@@ -18,6 +18,11 @@ export EMAIL="__BASH_EMAIL__"
 export HISTTIMEFORMAT="%h/%d - %H:%M:%S "
 export LANG="en_US.UTF-8"
 
+# AWS credentials
+export EC2_PRIVATE_KEY=$(echo $HOME/.keys/ec2/pk-*.pem)
+export EC2_CERT=$(echo $HOME/.keys/ec2/cert-*.pem)
+export AWS_CREDENTIAL_FILE=$HOME/.keys/ec2/aws-credential-file.txt
+
 # color ls
 if [ "$TERM" != "dumb" ]; then
     export LS_OPTIONS='--color=auto --group-directories-first'
