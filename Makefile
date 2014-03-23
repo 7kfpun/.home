@@ -3,8 +3,13 @@
 BINDIR=$(CURDIR)/bin
 UTILSDIR=$(CURDIR)/utils
 
-USERNAME := "kf"
-EMAIL := "7kfpun@gmail.com"
+ifeq ($(shell uname -n), jp-samsung)
+	USERNAME := "Pun Ka Fai"
+	EMAIL := "jp@multichannel.net"
+else
+	USERNAME := "kf"
+	EMAIL := "7kfpun@gmail.com"
+endif
 
 __BASH_USERNAME__ := $(USERNAME)
 __BASH_EMAIL__ := $(EMAIL)
