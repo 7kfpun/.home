@@ -37,7 +37,7 @@ install_home_tools () {
 
     print "Install chromium-browser"
     '' | add-apt-repository ppa:a-v-shkop/chromium
-    
+
     print "Install Ubuntu Tweak"
     '' | add-apt-repository ppa:tualatrix/ppa
 
