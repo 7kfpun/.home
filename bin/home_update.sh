@@ -53,6 +53,13 @@ install_dev_tools () {
     print 'Install dev tools.'
     apt-get install -y build-essential python-dev libxml2-dev git-core git-buildpackage exuberant-ctags python-software-properties subversion supervisor postgresql python-psycopg2 vim python-setuptools nodejs screen cmatrix virtualbox-qt openjdk-7-jdk curl python-pip nfs-kernel-server mongodb-clients
 }
+                     
+install_ec2_tools () {
+    print 'Install ec2 tools.'
+    apt-add-repository ppa:awstools-dev/awstools
+    apt-get update
+    apt-get install ec2-api-tools ec2-ami-tools iamcli rdscli
+}
 
 install_python_modules () {
     print 'Install python modules.'
@@ -80,6 +87,7 @@ setup () {
     update_system
     install_home_tools
     install_dev_tools
+    install_ec2_tools
     install_python_modules
     install_grep_tool
 }
