@@ -38,11 +38,12 @@ install_home_tools () {
     print "Install chromium-browser"
     '' | add-apt-repository ppa:a-v-shkop/chromium
 
-    print "Install Ubuntu Tweak"
-    '' | add-apt-repository ppa:tualatrix/ppa
+    # print "Install Ubuntu Tweak"
+    # '' | add-apt-repository ppa:tualatrix/ppa
 
     apt-get update -y
-    apt-get install -y dropbox google-chrome-stable chromium-browser ubuntu-tweak
+    apt-get install -y dropbox google-chrome-stable chromium-browser
+    # apt-get install -y ubuntu-tweak
     cd /etc/apt/sources.list.d && rm -f dropbox.list google.list tualatrix-ppa*.list *chromium*.list
 
     # cd ~/.vim && git pull
@@ -51,9 +52,10 @@ install_home_tools () {
 
 install_dev_tools () {
     print 'Install dev tools.'
-    apt-get install -y build-essential python-dev libxml2-dev git-core git-buildpackage exuberant-ctags python-software-properties subversion supervisor postgresql python-psycopg2 vim python-setuptools nodejs screen cmatrix virtualbox-qt openjdk-7-jdk curl python-pip nfs-kernel-server mongodb-clients
+    apt-get install -y build-essential python-dev libxml2-dev git-core git-buildpackage exuberant-ctags python-software-properties subversion python-psycopg2 vim python-setuptools screen cmatrix virtualbox-qt openjdk-7-jdk curl python-pip nfs-kernel-server mongodb-clients
+    # apt-get install -y supervisor postgresql nodejs
 }
-                     
+
 install_ec2_tools () {
     print 'Install ec2 tools.'
     apt-add-repository ppa:awstools-dev/awstools
