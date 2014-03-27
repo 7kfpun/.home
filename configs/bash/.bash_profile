@@ -27,3 +27,9 @@ vim()
     command vim "$@"
     stty "$STTYOPTS"
 }
+
+# magic mouse setting
+sudo rmmod hid_magicmouse
+sudo modprobe hid_magicmouse scroll-speed=55 scroll-acceleration=1
+mouse_id=$(xinput list | grep 's Mouse' | egrep -o "[[:digit:]]{2}") 
+eval "$(xinput set-button-map $mouse_id 1 2 3 5 4)"
