@@ -54,6 +54,11 @@ install_dev_tools () {
     print 'Install dev tools.'
     apt-get install -y build-essential python-dev libxml2-dev git-core git-buildpackage exuberant-ctags python-software-properties subversion python-psycopg2 vim python-setuptools screen cmatrix virtualbox-qt openjdk-7-jdk curl python-pip nfs-kernel-server mongodb-clients
     # apt-get install -y supervisor postgresql nodejs
+
+    print 'Install virtualbox'
+    wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | apt-key add -
+    apt-get update
+    apt-get install virtualbox
 }
 
 install_ec2_tools () {
