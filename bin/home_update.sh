@@ -22,7 +22,7 @@ update_system () {
 
 install_home_tools () {
     print 'Install home tools.'
-    apt-get install -y guake skype xclip
+    apt-get install -y guake skype xclip openvpn
 
     print "Install Vagrant"
     dpkg -i debs/vagrant_1.2.2_x86_64.deb
@@ -32,7 +32,7 @@ install_home_tools () {
     sh -c 'echo "deb http://linux.dropbox.com/ubuntu/ raring main" > /etc/apt/sources.list.d/dropbox.list'
 
     print "Install Google-chrome"
-    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - 
+    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
     sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list'
 
     print "Install chromium-browser"

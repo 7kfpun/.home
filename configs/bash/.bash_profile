@@ -4,6 +4,10 @@ if [ -n "$BASH_VERSION" ]; then
     if [ -f "$HOME/.bashrc" ]; then
         . "$HOME/.bashrc"
     fi
+
+    if [[ -f ~/.bash_functions ]]; then
+        . ~/.bash_functions
+    fi
 fi
 
 
