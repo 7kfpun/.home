@@ -46,8 +46,8 @@ gpg-keygen:
 
 .PHONY: install
 # target: install - Install my dot files
-install: uninstall $(HOME)/.bash_profile $(HOME)/.bashrc $(HOME)/.bash_aliases \
-    $(HOME)/.bash_login $(HOME)/.dircolors \
+install: uninstall $(HOME)/.bash_profile $(HOME)/.bashrc $(HOME)/.bash_functions \
+    $(HOME)/.bash_aliases $(HOME)/.bash_login $(HOME)/.dircolors \
     $(HOME)/.gitconfig $(HOME)/.gitignore \
     $(HOME)/.pip $(HOME)/.pylintrc
 	@echo "Installed"
@@ -62,6 +62,9 @@ $(HOME)/.bashrc:
 	    | sed "s/__BASH_EMAIL__/"$(__BASH_EMAIL__)"/g" \
 	    | sed "s/__BASH_DEBFULLNAME__/"$(__BASH_DEBFULLNAME__)"/g" \
 	    | sed "s/__BASH_DEBEMAIL__/"$(__BASH_DEBEMAIL__)"/g" > $(HOME)/.bashrc
+
+$(HOME)/.bash_functions:
+	ln -s $(CURDIR)/configs/bash/.bash_functions $(HOME)/.
 
 $(HOME)/.bash_aliases:
 	ln -s $(CURDIR)/configs/bash/.bash_aliases $(HOME)/.
