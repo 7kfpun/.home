@@ -391,3 +391,10 @@ magic_mouse () {
    mouse_id=$(xinput list | grep 'Apple Magic Mouse' | egrep -o "[[:digit:]]{2}")
    eval "$(xinput set-button-map $mouse_id 1 2 3 5 4)"
 }
+
+#
+# python SimpleHTTPServer
+#
+simplehttpserver () {
+   python -m SimpleHTTPServer
+}
