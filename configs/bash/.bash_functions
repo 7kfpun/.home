@@ -398,3 +398,10 @@ magic_mouse () {
 simplehttpserver () {
    python -m SimpleHTTPServer
 }
+
+#
+# clean unused memory
+#
+cleanmemory () {
+   sudo sysctl -w vm.drop_caches=3
+}
