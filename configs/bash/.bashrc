@@ -11,6 +11,10 @@ if [ -f ~/.bash_aliases ]; then
         . ~/.bash_aliases
 fi
 
+if [ -f ~/.bash_functions ]; then
+        . ~/.bash_functions
+fi
+
 export DEBFULLNAME="__BASH_DEBFULLNAME__"
 export DEBEMAIL="__BASH_DEBEMAIL__"
 export USERNAME="__BASH_USERNAME__"
