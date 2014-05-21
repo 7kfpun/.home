@@ -42,7 +42,7 @@ install_home_tools () {
     # '' | add-apt-repository ppa:tualatrix/ppa
 
     apt-get update -y
-    apt-get install -y dropbox google-chrome-stable chromium-browser
+    apt-get install -y dropbox google-chrome-stable chromium-browser flashplugin-installer
     # apt-get install -y ubuntu-tweak
     cd /etc/apt/sources.list.d && rm -f dropbox.list google.list tualatrix-ppa*.list *chromium*.list
 
@@ -105,15 +105,20 @@ install_ruby () {
     echo "gem: --no-ri --no-rdoc" > ~/.gemrc
 }
 
+install_goagent () {
+    sudo apt-get install python-dev python-greenlet python-gevent python-vte python-openssl python-crypto python-appindicator
+}
+
 setup () {
     configure_locales
     update_system
     install_home_tools
-    install_dev_tools
-    install_ec2_tools
-    install_python_modules
+    #install_dev_tools
+    #install_ec2_tools
+    #install_python_modules
     install_grep_tool
-    install_ruby
+    #install_ruby
+    #install_goagent
 }
 
 setup
