@@ -15,17 +15,16 @@ configure_locales () {
 
 update_system () {
     print 'Update system.'
-    add-apt-repository ppa:richarvey/nodester
     apt-get update -y
     apt-get upgrade -y
 }
 
 install_home_tools () {
     print 'Install home tools.'
-    apt-get install -y guake skype xclip openvpn
+    apt-get install -y guake skype xclip openvpn curl openjdk-6-jdk
 
-    print "Install Vagrant"
-    dpkg -i debs/vagrant_1.2.2_x86_64.deb
+    print "Install Vagrant and VirtualBox"
+    dpkg -i debs/*
 
     print "Install Dropbox"
     apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
@@ -53,7 +52,7 @@ install_home_tools () {
 install_dev_tools () {
     print 'Install dev tools.'
     apt-get install -y build-essential python-dev libxml2-dev git-core git-buildpackage exuberant-ctags python-software-properties subversion python-psycopg2 vim python-setuptools screen cmatrix virtualbox-qt openjdk-7-jdk curl python-pip nfs-kernel-server mongodb-clients
-    # apt-get install -y supervisor postgresql nodejs
+    # apt-get install -y supervisor postgresql
 
     print 'Install virtualbox'
     wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | apt-key add -
@@ -90,6 +89,8 @@ install_grep_tool () {
 }
 
 install_ruby () {
+    apt-get install nodejs nodejs-dev npm
+
     apt-get install -y git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev
 
     # install using rvm
@@ -117,7 +118,7 @@ setup () {
     #install_ec2_tools
     #install_python_modules
     install_grep_tool
-    #install_ruby
+    install_ruby
     #install_goagent
 }
 
