@@ -22,7 +22,7 @@ update_system () {
 
 install_home_tools () {
     print 'Install home tools.'
-    apt-get install -y guake skype xclip openvpn
+    apt-get install -y guake skype xclip openvpn vim-nox
 
     print "Install Vagrant"
     dpkg -i debs/vagrant_1.2.2_x86_64.deb
@@ -53,6 +53,7 @@ install_home_tools () {
 install_dev_tools () {
     print 'Install dev tools.'
     apt-get install -y build-essential python-dev libxml2-dev git-core git-buildpackage exuberant-ctags python-software-properties subversion python-psycopg2 vim python-setuptools screen cmatrix virtualbox-qt openjdk-7-jdk curl python-pip nfs-kernel-server mongodb-clients
+    apt-get install -y ipython
     # apt-get install -y supervisor postgresql nodejs
 
     print 'Install virtualbox'
