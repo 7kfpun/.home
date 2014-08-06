@@ -52,8 +52,9 @@ install_home_tools () {
 
 install_dev_tools () {
     print 'Install dev tools.'
-    apt-get install -y build-essential python-dev python3-dev libxml2-dev git-core git-buildpackage exuberant-ctags python-software-properties subversion vim python-setuptools screen cmatrix virtualbox-qt openjdk-7-jdk curl python-pip nfs-kernel-server mongodb-clients
+    apt-get install -y build-essential python-dev libxml2-dev git-core git-buildpackage exuberant-ctags python-software-properties subversion vim python-setuptools screen cmatrix virtualbox-qt openjdk-7-jdk curl python-pip python3-pip nfs-kernel-server mongodb-clients
     apt-get install -y ipython
+    apt-get install -y python3-pip python3-dev ipython3
     # apt-get install -y supervisor postgresql nodejs python-psycopg2
 
     print 'Install virtualbox'
