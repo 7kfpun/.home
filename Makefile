@@ -6,7 +6,12 @@ UTILSDIR=$(CURDIR)/utils
 ifeq ($(shell uname -n), jp-samsung)
 	USERNAME := "Pun Ka Fai"
 	EMAIL := "jp@multichannel.net"
-else
+endif
+
+ifeq ($(shell uname -n), jp-Lenovo-H530s)
+	USERNAME := "Pun Ka Fai"
+	EMAIL := "jay.pun@liricco.com"
+else    
 	USERNAME := "kf"
 	EMAIL := "7kfpun@gmail.com"
 endif

@@ -21,10 +21,10 @@ update_system () {
 
 install_home_tools () {
     print 'Install home tools.'
-    apt-get install -y guake skype xclip openvpn curl openjdk-6-jdk
+    apt-get install -y guake skype xclip openvpn curl vim-nox
 
-    print "Install Vagrant and VirtualBox"
-    dpkg -i debs/*
+    # print "Install Vagrant and VirtualBox"
+    # dpkg -i debs/*
 
     print "Install Dropbox"
     apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
@@ -51,8 +51,10 @@ install_home_tools () {
 
 install_dev_tools () {
     print 'Install dev tools.'
-    apt-get install -y build-essential python-dev libxml2-dev git-core git-buildpackage exuberant-ctags python-software-properties subversion python-psycopg2 vim python-setuptools screen cmatrix virtualbox-qt openjdk-7-jdk curl python-pip nfs-kernel-server mongodb-clients
-    # apt-get install -y supervisor postgresql
+    apt-get install -y build-essential python-dev libxml2-dev git-core git-buildpackage exuberant-ctags python-software-properties subversion python-setuptools screen cmatrix virtualbox-qt openjdk-7-jdk curl python-pip python3-pip nfs-kernel-server mongodb-clients
+    apt-get install -y ipython
+    apt-get install -y python3-pip python3-dev ipython3
+    # apt-get install -y supervisor postgresql nodejs python-psycopg2
 
     print 'Install virtualbox'
     wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | apt-key add -
@@ -98,8 +100,8 @@ install_ruby () {
     curl -L https://get.rvm.io | bash -s stable
     source ~/.rvm/scripts/rvm
     echo "source ~/.rvm/scripts/rvm" >> ~/.bashrc
-    rvm install 2.0.0-p451
-    rvm use 2.0.0-p451 --default
+    rvm install 2.1.2
+    rvm use 2.1.2 --default
     ruby -v
 
     # tell Rubygems not to install the documentation for each package locally
@@ -107,19 +109,20 @@ install_ruby () {
 }
 
 install_goagent () {
-    sudo apt-get install python-dev python-greenlet python-gevent python-vte python-openssl python-crypto python-appindicator
+    apt-get install python-dev python-greenlet python-gevent python-vte python-openssl python-crypto python-appindicator
 }
 
 setup () {
-    configure_locales
-    update_system
-    install_home_tools
-    #install_dev_tools
+    #configure_locales
+    #update_system
+    #install_home_tools
+    install_dev_tools
     #install_ec2_tools
-    #install_python_modules
+    install_python_modules
     install_grep_tool
     install_ruby
     #install_goagent
 }
 
 setup
+
