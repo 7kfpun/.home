@@ -131,3 +131,8 @@ uninstall:
 	rm -rf $(HOME)/.pip
 	rm -rf $(HOME)/.pylintrc
 
+.PHONY: ansible
+# target: ansible - home configuration
+ansible:
+	@sudo apt-get install ansible -y || echo "Skip ansible installation"
+	@ansible-playbook -i ansible/inventory ansible/playbook.yml -c local -sK -vv
