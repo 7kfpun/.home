@@ -1,19 +1,39 @@
 ---
 - hosts: all
-  sudo: yes
+
+  vars_files:
+    - vars.yml
 
   tasks:
-    - name: apt-get update
-      apt: update_cache=yes cache_valid_time=2678400
-      sudo: yes
+  - include: install.deb.yml
+    when: ansible_os_family == "Debian"
 
-    - name: Install python packages
-      apt: pkg={{item}}
-      with_items:
-        - build-essential
-        - git
-        - python3
-        - python-pip
-        - python3-dev
-        - wget
-      sudo: yes
+  # - include: install.osx.yml
+    # when: ansible_os_family == "Darwin"
+
+  - name: Bash config
+    file: state=link dest=~{{home_user}}/.{{item}} src={{inventory_dir}}/../config/bash/{{item}} force=yes owner={{home_user}}
+    with_items:
+      - bashrc
+      - bash_aliases
+      - bash_profile
+
+  - name: Setup pip - pt. 1
+    file: state=directory dest=~{{home_user}}/.pip owner={{home_user}}
+
+  - name: Setup pip - pt. 2
+    file: state=link dest=~{{home_user}}/.pip/pip.conf src={{inventory_dir}}/../config/.pip/pip.conf force=yes owner={{home_user}}
+
+  - name: Setup pip - pt. 3
+    pip: name={{item}}
+    with_items:
+      - virtualenv
+      - virtualenv-clone
+      - ipython
+      - ipdb
+      - pylint
+
+  # - name: Setup VIM
+    # git: repo=https://github.com/klen/.vim dest=~{{home_user}}/.vim depth=2
+    # sudo: yes
+    # sudo_user: "{{home_user}}"
