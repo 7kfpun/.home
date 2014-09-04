@@ -1,0 +1,16 @@
+---
+
+- name: apt-get update
+  apt: update_cache=yes cache_valid_time=2678400
+  sudo: yes
+
+- name: Install python packages
+  apt: pkg={{item}}
+  with_items:
+    - build-essential
+    - git
+    - python3
+    - python-pip
+    - python3-dev
+    - wget
+  sudo: yes
