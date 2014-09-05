@@ -27,3 +27,6 @@ vim()
     command vim "$@"
     stty "$STTYOPTS"
 }
+
+# Tmux fix vim color
+TERM=screen-256color
