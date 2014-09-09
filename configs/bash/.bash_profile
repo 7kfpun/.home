@@ -4,10 +4,6 @@ if [ -n "$BASH_VERSION" ]; then
     if [ -f "$HOME/.bashrc" ]; then
         . "$HOME/.bashrc"
     fi
-
-    if [[ -f "$HOME/.bash_functions" ]]; then
-        . "$HOME/.bash_functions"
-    fi
 fi
 
 
