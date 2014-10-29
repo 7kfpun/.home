@@ -72,7 +72,7 @@ install_ec2_tools () {
 install_python_modules () {
     print 'Install python modules.'
     easy_install -U setuptools
-    for I in pip virtualenv virtualenv-clone ipython ipdb pylint
+    for I in pip virtualenv virtualenv-clone ipython ipdb pylint httpie
     do
         (python -c "import $I" 2>/dev/null || {
         echo -e ${red}$I${cyan} not found! Attempting to install... $nc;
