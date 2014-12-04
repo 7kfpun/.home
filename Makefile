@@ -8,7 +8,7 @@ ifeq ($(shell uname -n), jp-samsung)
 	EMAIL := "jp@multichannel.net"
 endif
 
-ifeq ($(shell uname -n), jp-Lenovo-H530s)
+ifeq ($(shell uname -n), jp-liricco)
 	USERNAME := "Pun Ka Fai"
 	EMAIL := "jay.pun@liricco.com"
 else    
