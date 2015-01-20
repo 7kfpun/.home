@@ -6,7 +6,12 @@ UTILSDIR=$(CURDIR)/utils
 ifeq ($(shell uname -n), jp-samsung)
 	USERNAME := "Pun Ka Fai"
 	EMAIL := "jp@multichannel.net"
-else
+endif
+
+ifeq ($(shell uname -n), jp-liricco)
+	USERNAME := "Pun Ka Fai"
+	EMAIL := "jay.pun@liricco.com"
+else    
 	USERNAME := "kf"
 	EMAIL := "7kfpun@gmail.com"
 endif
@@ -126,3 +131,8 @@ uninstall:
 	rm -rf $(HOME)/.pip
 	rm -rf $(HOME)/.pylintrc
 
+.PHONY: ansible
+# target: ansible - home configuration
+ansible:
+	@sudo apt-get install ansible -y || echo "Skip ansible installation"
+	@ansible-playbook -i ansible/inventory ansible/playbook.yml -c local -sK -vv
