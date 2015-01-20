@@ -18,3 +18,13 @@ alias la='ll $LS_OPTIONS -FhlA'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+
+# tmux
+alias tmux='tmux -2'
+
+# log
+alias log_notification_web='ssh 54.164.114.254 sudo tail -f /var/log/liricco/notification/web.log'
+alias log_notification_celery='ssh 54.164.114.254 sudo tail -f /var/log/liricco/notification/celery.log'
+alias log_production_web='ssh 192.168.1.116 -p 2222 sudo tail -f /var/log/liricco/production/web.log'
+alias log_production_tcp='ssh 192.168.1.116 -p 2222 sudo tail -f /var/log/liricco/production/tcp.log'
+alias log_localization='ssh localization.valta.com sudo tail -f /var/log/liricco/localization/web.log'
