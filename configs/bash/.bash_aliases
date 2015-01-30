@@ -3,7 +3,7 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias less='less -r'
-
+alias tmp='cd /tmp'
 
 # others
 alias vi='vim'
