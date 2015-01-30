@@ -30,7 +30,7 @@ export AWS_CREDENTIAL_FILE=$HOME/.keys/ec2/aws-credential-file.txt
 # color ls
 if [ "$TERM" != "dumb" ]; then
     export LS_OPTIONS='--color=auto --group-directories-first'
-    eval `dircolors -b $HOME/.home/configs/bash/.dir_colors`
+    eval `dircolors -b $HOME/.dir_colors`
 fi
 
 # Completion
