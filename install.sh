@@ -63,7 +63,7 @@ git checkout develop && git submodule update --init --recursive
 echo "Setting up vim...\n"
 lnif $vimfiles/.vimrc $HOME/.vimrc
 
-echo "Update/Install plugins using NeoBundle"
-vim +NeoBundleInstall +qall
+# echo "Update/Install plugins using NeoBundle"
+# vim +NeoBundleInstall +qall
 
 source ~/.bashrc

@@ -4,5 +4,5 @@ My home configuration files. To configure .home use Makefile placeholders
 
 ## Installation
 
-    $ git clone https://github.com/7kfpun/.home.git
-    $ cd .home && ./install.sh
+    $ curl https://raw.githubusercontent.com/7kfpun/.home/develop/install.sh -L | sh
+    $ cd ~/.vim && vim +NeoBundleInstall +qall
