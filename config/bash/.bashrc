@@ -34,6 +34,15 @@ if [ "$TERM" != "dumb" ]; then
 fi
 
 # Completion
-source $HOME/.home/bash_completion/vagrant-completion.bash
-source $HOME/.home/bash_completion/pycompletion/pip-completion.bash
-source $HOME/.home/bash_completion/pycompletion/virtualenv-completion.bash
+source $HOME/.home/config/bash/completion/ack-grep-completion.bash
+# source $HOME/.home/config/bash/completion/ag-completion.bash
+source $HOME/.home/config/bash/completion/django-completion.bash
+# source $HOME/.home/config/bash/completion/gem1.9.1-completion.bash
+# source $HOME/.home/config/bash/completion/git-buildpackage-completion.bash
+source $HOME/.home/config/bash/completion/git-completion.bash
+source $HOME/.home/config/bash/completion/git-flow-completion.bash
+source $HOME/.home/config/bash/completion/mercurial-completion.bash
+source $HOME/.home/config/bash/completion/openvpn-completion.bash
+source $HOME/.home/config/bash/completion/pip-completion.bash
+source $HOME/.home/config/bash/completion/vagrant-completion.bash
+# source $HOME/.home/config/bash/completion/virtualenv-completion.bash
