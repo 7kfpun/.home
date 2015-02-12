@@ -65,3 +65,5 @@ lnif $vimfiles/.vimrc $HOME/.vimrc
 
 echo "Update/Install plugins using NeoBundle"
 vim +NeoBundleInstall +qall
+
+source ~/.bashrc
