@@ -30,10 +30,19 @@ export AWS_CREDENTIAL_FILE=$HOME/.keys/ec2/aws-credential-file.txt
 # color ls
 if [ "$TERM" != "dumb" ]; then
     export LS_OPTIONS='--color=auto --group-directories-first'
-    eval `dircolors -b $HOME/.home/configs/bash/.dir_colors`
+    eval `dircolors -b $HOME/.dir_colors`
 fi
 
 # Completion
-source $HOME/.home/bash_completion/vagrant-completion.bash
-source $HOME/.home/bash_completion/pycompletion/pip-completion.bash
-source $HOME/.home/bash_completion/pycompletion/virtualenv-completion.bash
+source $HOME/.home/config/bash/completion/ack-grep-completion.bash
+# source $HOME/.home/config/bash/completion/ag-completion.bash
+source $HOME/.home/config/bash/completion/django-completion.bash
+# source $HOME/.home/config/bash/completion/gem1.9.1-completion.bash
+# source $HOME/.home/config/bash/completion/git-buildpackage-completion.bash
+source $HOME/.home/config/bash/completion/git-completion.bash
+source $HOME/.home/config/bash/completion/git-flow-completion.bash
+source $HOME/.home/config/bash/completion/mercurial-completion.bash
+source $HOME/.home/config/bash/completion/openvpn-completion.bash
+source $HOME/.home/config/bash/completion/pip-completion.bash
+source $HOME/.home/config/bash/completion/vagrant-completion.bash
+# source $HOME/.home/config/bash/completion/virtualenv-completion.bash

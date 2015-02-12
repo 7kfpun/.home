@@ -11,29 +11,73 @@
   # - include: install.osx.yml
     # when: ansible_os_family == "Darwin"
 
-  - name: Bash config
-    file: state=link dest=~{{home_user}}/.{{item}} src={{inventory_dir}}/../config/bash/{{item}} force=yes owner={{home_user}}
+  - name: bash
+    file: state=link dest=~{{home_user}}/{{item}} src={{inventory_dir}}/config/bash/{{item}} force=yes owner={{home_user}}
     with_items:
-      - bashrc
-      - bash_aliases
-      - bash_profile
+      - ".bashrc"
+      - ".bash_aliases"
+      - ".bash_profile"
+      - ".bash_functions"
+      - ".bash_login"
+      - ".bash_logout"
 
-  - name: Setup pip - pt. 1
-    file: state=directory dest=~{{home_user}}/.pip owner={{home_user}}
-
-  - name: Setup pip - pt. 2
-    file: state=link dest=~{{home_user}}/.pip/pip.conf src={{inventory_dir}}/../config/.pip/pip.conf force=yes owner={{home_user}}
-
-  - name: Setup pip - pt. 3
-    pip: name={{item}}
+  - name: Setup utils
+    file: state=link dest=~{{home_user}}/{{item}} src={{inventory_dir}}/config/{{item}} force=yes owner={{home_user}}
     with_items:
-      - virtualenv
-      - virtualenv-clone
-      - ipython
+      - ".gitignore"
+      - ".pylintrc"
+
+  - shell: uname -n
+    register: uname
+
+  - name: gitconfig
+    copy: dest=~{{home_user}}/.gitconfig src={{inventory_dir}}/config/.gitconfig owner={{home_user}}
+  - replace: dest=~{{home_user}}/.gitconfig regexp='__GIT_NAME__' replace='kf'
+    when: uname.stdout.find('kf') != -1
+  - replace: dest=~{{home_user}}/.gitconfig regexp='__GIT_EMAIL__' replace='7kfpun@gmail.com'
+    when: uname.stdout.find('kf') != -1
+  - replace: dest=~{{home_user}}/.gitconfig regexp='__GIT_NAME__' replace='Pun Ka Fai'
+    when: uname.stdout.find('liricco') != -1
+  - replace: dest=~{{home_user}}/.gitconfig regexp='__GIT_EMAIL__' replace='jay.pun@liricco.com'
+    when: uname.stdout.find('liricco') != -1
+  - replace: dest=~{{home_user}}/.gitconfig regexp='__GIT_NAME__' replace='Pun Ka Fai'
+    when: uname.stdout.find('multichannel') != -1
+  - replace: dest=~{{home_user}}/.gitconfig regexp='__GIT_EMAIL__' replace='jp@multichannel.net'
+    when: uname.stdout.find('multichannel') != -1
+
+  - name: pip
+    file: state=directory path=~{{home_user}}/.pip owner={{home_user}}
+  - file: state=link dest=~{{home_user}}/.pip/pip.conf src={{inventory_dir}}/config/.pip/pip.conf force=yes owner={{home_user}}
+  - pip: name={{item}}
+    with_items:
+      - httpie
       - ipdb
+      - ipython
+      - pip-tools
       - pylint
+      - virtualenv
+      # - virtualenv-clone
+
+  - name: ssh
+    file: state=directory dest=~{{home_user}}/.ssh owner={{home_user}}
+  - lineinfile: >
+      dest=~{{home_user}}/.ssh/authorized_keys
+      line="{{item}}"
+      create=yes
+    with_items: home_authorized_keys
+  - lineinfile: >
+      dest=~{{home_user}}/.ssh/known_hosts
+      line="{{item}}"
+      create=yes
+    with_items: home_fingerprints
+
+  - name: dircolors
+    get_url: url=https://raw.github.com/trapd00r/LS_COLORS/master/LS_COLORS dest={{inventory_dir}}/config/bash/.dir_colors owner={{home_user}}
+  - file: state=link dest=~{{home_user}}/.dir_colors src={{inventory_dir}}/config/bash/.dir_colors owner={{home_user}}
 
   # - name: Setup VIM
     # git: repo=https://github.com/klen/.vim dest=~{{home_user}}/.vim depth=2
     # sudo: yes
     # sudo_user: "{{home_user}}"
+
+# vim:sw=2:ft=ansible
