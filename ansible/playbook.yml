@@ -72,8 +72,8 @@
     with_items: home_fingerprints
 
   - name: dircolors
-    get_url: url=https://raw.github.com/trapd00r/LS_COLORS/master/LS_COLORS dest={{inventory_dir}}/config/bash/.dir_colors owner={{home_user}}
-  - file: state=link dest=~{{home_user}}/.dir_colors src={{inventory_dir}}/config/bash/.dir_colors owner={{home_user}}
+    get_url: url=https://raw.github.com/trapd00r/LS_COLORS/master/LS_COLORS dest={{inventory_dir}}/config/.dir_colors owner={{home_user}}
+  - file: state=link dest=~{{home_user}}/.dir_colors src={{inventory_dir}}/config/.dir_colors owner={{home_user}}
 
   # - name: Setup VIM
     # git: repo=https://github.com/klen/.vim dest=~{{home_user}}/.vim depth=2

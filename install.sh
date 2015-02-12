@@ -45,6 +45,7 @@ echo "Setting up dev tools...\n"
 lnif $dotfiles/config/.gitconfig $HOME/.gitconfig
 lnif $dotfiles/config/.gitignore $HOME/.gitignore
 lnif $dotfiles/config/.pylintrc $HOME/.pylintrc
+lnif $dotfiles/config/.dir_colors $HOME/.dir_colors
 
 
 echo "Installing/Updating vim\n"
