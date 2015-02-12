@@ -1,4 +1,4 @@
-SAGES CONTROL]
+[MESSAGES CONTROL]
 # Disable the message(s) with the given id(s).
 # http://pylint-messages.wikidot.com/all-codes
 #
