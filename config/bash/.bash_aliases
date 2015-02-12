@@ -22,6 +22,9 @@ alias egrep='egrep --color=auto'
 # tmux
 alias tmux='tmux -2'
 
+# python
+alias env='source .env/bin/activate'
+
 # log
 alias log_notification_web='ssh 54.164.114.254 sudo tail -f /var/log/liricco/notification/web.log'
 alias log_notification_celery='ssh 54.164.114.254 sudo tail -f /var/log/liricco/notification/celery.log'
