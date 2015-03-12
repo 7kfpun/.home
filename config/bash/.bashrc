@@ -51,3 +51,6 @@ source $HOME/.home/config/bash/completion/*-completion.bash
 # source $HOME/.home/config/bash/completion/pip-completion.bash
 # source $HOME/.home/config/bash/completion/vagrant-completion.bash
 # source $HOME/.home/config/bash/completion/virtualenv-completion.bash
+
+# load anaconda
+export PATH=~/anaconda/bin:$PATH
