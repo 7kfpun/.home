@@ -56,7 +56,8 @@
     pd = pull origin develop
     ph = push --tags
     s = status -sb
-       
+    pr = pull --rebase
+
     ; View logs and diff
     last = log -1 --stat
     hist = log --pretty=format:'%Cred%h%Creset %ad | %Cgreen%s%d%Creset [%an]' --graph --date=short
@@ -71,7 +72,7 @@
     hotfix = flow hotfix
     feature = flow feature
     release = flow release
-   
+
     ; Undo
     amend = commit --amend -C HEAD
     undo = reset --soft HEAD^
