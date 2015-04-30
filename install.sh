@@ -61,7 +61,7 @@ git checkout develop && git submodule update --init --recursive
 
 # vim
 echo "Setting up vim...\n"
-lnif $vimfiles/.vimrc $HOME/.vimrc
+lnif $vimfiles/vimrc $HOME/.vimrc
 
 echo "Update/Install plugins using NeoBundle"
 vim +NeoBundleInstall +qall < /dev/tty # necessary to avoid vim: Input not from terminal warning
