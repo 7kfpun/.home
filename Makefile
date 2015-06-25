@@ -19,7 +19,6 @@ update:
 # target: ansible - home configuration
 ansible:
 	@sudo apt-get install ansible -y || echo "Skip ansible installation"
-	@command -v ansible-playbook || make ansible-install
 	@ansible-playbook -i inventory ansible/playbook.yml -c local -sK -vv
 
 
