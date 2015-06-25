@@ -54,6 +54,7 @@
   - file: state=link dest=~{{home_user}}/.pip/pip.conf src={{inventory_dir}}/config/.pip/pip.conf force=yes owner={{home_user}}
   - pip: name={{item}}
     with_items:
+      - git-up
       - httpie
       - ipdb
       - ipython
