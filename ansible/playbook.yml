@@ -33,9 +33,9 @@
   - name: gitconfig
     copy: dest=~{{home_user}}/.gitconfig src={{inventory_dir}}/config/gitconfig owner={{home_user}}
   - replace: dest=~{{home_user}}/.gitconfig regexp='__GIT_NAME__' replace='kf'
-    when: uname.stdout.find('kf') != -1
+    when: uname.stdout.find('kf') != -1 or uname.stdout.find('Darwin') != -1
   - replace: dest=~{{home_user}}/.gitconfig regexp='__GIT_EMAIL__' replace='7kfpun@gmail.com'
-    when: uname.stdout.find('kf') != -1
+    when: uname.stdout.find('kf') != -1 or uname.stdout.find('Darwin') != -1
   - replace: dest=~{{home_user}}/.gitconfig regexp='__GIT_NAME__' replace='Pun Ka Fai'
     when: uname.stdout.find('liricco') != -1
   - replace: dest=~{{home_user}}/.gitconfig regexp='__GIT_EMAIL__' replace='jay.pun@liricco.com'
@@ -49,10 +49,14 @@
   - replace: dest=~{{home_user}}/.gitconfig regexp='__GIT_EMAIL__' replace='jay.pun@investtab.com'
     when: uname.stdout.find('investtab') != -1
 
-  - name: pip
+  - name: pip step 1
     file: state=directory path=~{{home_user}}/.pip owner={{home_user}}
-  - file: state=link dest=~{{home_user}}/.pip/pip.conf src={{inventory_dir}}/config/.pip/pip.conf force=yes owner={{home_user}}
-  - pip: name={{item}}
+
+  - name: pip step 2
+    file: state=link dest=~{{home_user}}/.pip/pip.conf src={{inventory_dir}}/config/.pip/pip.conf force=yes owner={{home_user}}
+
+  - name: pip step 3
+    pip: name={{item}}
     with_items:
       - git-up
       - httpie
@@ -63,26 +67,32 @@
       - virtualenv
       # - virtualenv-clone
 
-  - name: ssh
+  - name: ssh step 1
     file: state=directory dest=~{{home_user}}/.ssh owner={{home_user}}
-  - lineinfile: >
+
+  - name: ssh step 2
+    lineinfile: >
       dest=~{{home_user}}/.ssh/authorized_keys
       line="{{item}}"
       create=yes
     with_items: home_authorized_keys
-  - lineinfile: >
+
+  - name: ssh step 2
+    lineinfile: >
       dest=~{{home_user}}/.ssh/known_hosts
       line="{{item}}"
       create=yes
     with_items: home_fingerprints
 
   - name: dircolors
-    get_url: url=https://raw.github.com/trapd00r/LS_COLORS/master/LS_COLORS dest={{inventory_dir}}/config/.dir_colors owner={{home_user}}
-  - file: state=link dest=~{{home_user}}/.dir_colors src={{inventory_dir}}/config/.dir_colors owner={{home_user}}
+    get_url: url=https://raw.github.com/trapd00r/LS_COLORS/master/LS_COLORS dest={{inventory_dir}}/config/dir_colors owner={{home_user}}
+  - file: state=link dest=~{{home_user}}/.dir_colors src={{inventory_dir}}/config/dir_colors owner={{home_user}}
 
   # - name: Setup VIM
     # git: repo=https://github.com/7kfpun/.vim dest=~{{home_user}}/.vim depth=2
     # sudo: yes
     # sudo_user: "{{home_user}}"
+
+  - file: state=directory owner={{home_user}} recurse=yes path=~{{home_user}}/.home
 
 # vim:sw=2:ft=ansible
