@@ -8,17 +8,15 @@
   apt: pkg={{item}}
   with_items:
     - build-essential
-    - curl 
-    - exuberant-ctags 
+    - curl
+    - exuberant-ctags
     - git
-    - git-buildpackage 
-    - git-core 
+    - git-buildpackage
+    - git-core
     - libxml2-dev
     - nfs-kernel-server
     - python-pip
-    - python-software-properties 
+    - python-software-properties
     - python3
     - python3-dev
-    - supervisor
     - wget
-
