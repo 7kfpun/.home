@@ -12,26 +12,26 @@
     # when: ansible_os_family == "Darwin"
 
   - name: bash
-    file: state=link dest=~{{home_user}}/{{item}} src={{inventory_dir}}/config/bash/{{item}} force=yes owner={{home_user}}
+    file: state=link dest=~{{home_user}}/.{{item}} src={{inventory_dir}}/config/bash/{{item}} force=yes owner={{home_user}}
     with_items:
-      - ".bashrc"
-      - ".bash_aliases"
-      - ".bash_profile"
-      - ".bash_functions"
-      - ".bash_login"
-      - ".bash_logout"
+      - bashrc
+      - bash_aliases
+      - bash_profile
+      - bash_functions
+      - bash_login
+      - bash_logout
 
   - name: Setup utils
-    file: state=link dest=~{{home_user}}/{{item}} src={{inventory_dir}}/config/{{item}} force=yes owner={{home_user}}
+    file: state=link dest=~{{home_user}}/.{{item}} src={{inventory_dir}}/config/{{item}} force=yes owner={{home_user}}
     with_items:
-      - ".gitignore"
-      - ".pylintrc"
+      - gitignore
+      - pylintrc
 
   - shell: uname -n
     register: uname
 
   - name: gitconfig
-    copy: dest=~{{home_user}}/.gitconfig src={{inventory_dir}}/config/.gitconfig owner={{home_user}}
+    copy: dest=~{{home_user}}/.gitconfig src={{inventory_dir}}/config/gitconfig owner={{home_user}}
   - replace: dest=~{{home_user}}/.gitconfig regexp='__GIT_NAME__' replace='kf'
     when: uname.stdout.find('kf') != -1
   - replace: dest=~{{home_user}}/.gitconfig regexp='__GIT_EMAIL__' replace='7kfpun@gmail.com'
@@ -44,6 +44,10 @@
     when: uname.stdout.find('multichannel') != -1
   - replace: dest=~{{home_user}}/.gitconfig regexp='__GIT_EMAIL__' replace='jp@multichannel.net'
     when: uname.stdout.find('multichannel') != -1
+  - replace: dest=~{{home_user}}/.gitconfig regexp='__GIT_NAME__' replace='Pun Ka Fai'
+    when: uname.stdout.find('investtab') != -1
+  - replace: dest=~{{home_user}}/.gitconfig regexp='__GIT_EMAIL__' replace='jay.pun@investtab.com'
+    when: uname.stdout.find('investtab') != -1
 
   - name: pip
     file: state=directory path=~{{home_user}}/.pip owner={{home_user}}
