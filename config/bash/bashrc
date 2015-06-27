@@ -1,12 +1,18 @@
+# $HOME/.bashrc for bash-3.0 (or later)
+
+# if not running interactively, don't do anything
+[ -z "$PS1"  ] && return
+
+__command () {
+    command -v $1 1>/dev/null
+}
+
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 # Use move to trash instead of remove
 rm="mv -t ~/.Trash"
 
 
-### Alias definitions. ###
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+# Alias definitions
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -28,17 +34,35 @@ export EC2_CERT=$(echo $HOME/.keys/ec2/cert-*.pem)
 export AWS_CREDENTIAL_FILE=$HOME/.keys/ec2/aws-credential-file.txt
 
 # color ls
-if [ "$TERM" != "dumb" ]; then
-    export LS_OPTIONS='--color=auto --group-directories-first'
-    eval `dircolors -b $HOME/.dir_colors`
-fi
+# if [ "$TERM" != "dumb" ]; then
+#     export LS_OPTIONS='--color=auto --group-directories-first'
+#     eval `dircolors -b $HOME/.dir_colors`
+# fi
 
 function have() {
     return $( which $1 >/dev/null )
 }
 
+setup () {
+    local SRCDIR=$HOME/.home
+    local CFGDIR=$SRCDIR/config
+
+    local INCDIR=$CFGDIR/bash/include
+    local CMPDIR=$CFGDIR/bash/completion
+
+    # Color
+    source $HOME/.home/config/bash/include/colors.sh
+    source $HOME/.home/config/bash/include/ps.sh
+    source $HOME/.home/config/bash/include/git.sh
+
+    # Close promt
+    PS1="${PS1}\n$ "
+}
+
+setup && unset setup
+
 # Completion
-source $HOME/.home/config/bash/completion/*-completion.bash
+# source $HOME/.home/config/bash/completion/*-completion.bash
 # source $HOME/.home/config/bash/completion/ack-grep-completion.bash
 # source $HOME/.home/config/bash/completion/ag-completion.bash
 # source $HOME/.home/config/bash/completion/django-completion.bash
