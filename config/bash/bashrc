@@ -50,10 +50,12 @@ setup () {
     local INCDIR=$CFGDIR/bash/include
     local CMPDIR=$CFGDIR/bash/completion
 
-    # Color
-    source $HOME/.home/config/bash/include/colors.sh
-    source $HOME/.home/config/bash/include/ps.sh
-    source $HOME/.home/config/bash/include/git.sh
+    # Completion
+    source $INCDIR/colors.sh
+    source $INCDIR/ps.sh
+    source $INCDIR/git.sh
+
+    source $CMPDIR/vagrant-completion.bash
 
     # Close promt
     PS1="${PS1}\n$ "
