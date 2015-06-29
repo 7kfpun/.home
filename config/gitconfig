@@ -61,8 +61,8 @@
     ; View logs and diff
     last = log -1 --stat
     hist = log --pretty=format:'%Cred%h%Creset %ad | %Cgreen%s%d%Creset [%an]' --graph --date=short
-    ls = log --pretty=format:"%C(green)%ar %C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn#%cE]" --decorate
-    ll = log --pretty=format:"%C(green)%ar %C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn#%cE]" --decorate --numstat
+    ls = log --pretty=format:"%C(green)%ar\\ %C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn#%cE]" --decorate
+    ll = log --pretty=format:"%C(green)%ar\\ %C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn#%cE]" --decorate --numstat
     lg = log -p --stat
     d = diff --word-diff
     dc = diff --cached
