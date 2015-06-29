@@ -11,7 +11,7 @@ alias sim='sudo vim'
 alias ..="cd .."
 alias vi='vim'
 
-alias ls='ls $LS_OPTIONS -Fh' 
+alias ls='ls $LS_OPTIONS -Fh'
 alias ll='ls $LS_OPTIONS -Fhl'
 alias la='ll $LS_OPTIONS -FhlA'
 
@@ -23,7 +23,7 @@ alias egrep='egrep --color=auto'
 alias tmux='tmux -2'
 
 # python
-alias env='source .env/bin/activate'
+alias activate='source .env/bin/activate'
 
 # log
 alias log_notification_web='ssh 54.164.114.254 sudo tail -f /var/log/liricco/notification/web.log'
