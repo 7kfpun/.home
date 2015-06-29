@@ -58,7 +58,7 @@ setup () {
     source $CMPDIR/vagrant-completion.bash
 
     # Close promt
-    PS1="${PS1}\n$ "
+    PS1="${debian_chroot:+($debian_chroot)}${PS1}\n$ "
 }
 
 setup && unset setup
