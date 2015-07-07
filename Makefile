@@ -12,16 +12,19 @@ help:
 update:
 	@git fetch origin
 	@git rebase origin/master
+	@git submodule update --init
 
 
 .PHONY: ansible
 # target: ansible - home configuration
 ansible:
-	@sudo apt-get install ansible -y || echo "Skip ansible installation"
+	@command -v ansible-playbook || make ansible-install
 	@ansible-playbook -i inventory ansible/playbook.yml -c local -sK -vv
 
 
 .PHONY: ansible-install
 # target: ansible-install - install ansible
 ansible-install:
-	@command -v apt-get && sudo apt-get install software-properties-common && sudo apt-add-repository ppa:ansible/ansible &&  sudo apt-get update && sudo apt-get install ansible -y || true
+	@command -v pip && sudo pip install ansible || true
+	@command -v apt-get && sudo apt-get install ansible -y || true
+	@command -v yum && sudo yum install ansible || true

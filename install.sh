@@ -45,7 +45,7 @@ echo "Setting up dev tools...\n"
 lnif $dotfiles/config/.gitconfig $HOME/.gitconfig
 lnif $dotfiles/config/.gitignore $HOME/.gitignore
 lnif $dotfiles/config/.pylintrc $HOME/.pylintrc
-
+lnif $dotfiles/config/.dir_colors $HOME/.dir_colors
 
 echo "Installing/Updating vim\n"
 
@@ -61,7 +61,9 @@ git checkout develop && git submodule update --init --recursive
 
 # vim
 echo "Setting up vim...\n"
-lnif $vimfiles/.vimrc $HOME/.vimrc
+lnif $vimfiles/vimrc $HOME/.vimrc
 
 echo "Update/Install plugins using NeoBundle"
-vim +NeoBundleInstall +qall
+vim +NeoBundleInstall +qall < /dev/tty # necessary to avoid vim: Input not from terminal warning
+
+echo "Everything succesfully installed."
