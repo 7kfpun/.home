@@ -14,7 +14,6 @@
 ._
 .coverage
 .env
-.env
 .pip/cache
 .ropeproject
 .tags
