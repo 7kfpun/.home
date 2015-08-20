@@ -28,6 +28,8 @@ export EMAIL="__BASH_EMAIL__"
 export HISTTIMEFORMAT="%h/%d - %H:%M:%S "
 export LANG="en_US.UTF-8"
 
+export GOPATH=$HOME/go
+
 # AWS credentials
 export EC2_PRIVATE_KEY=$(echo $HOME/.keys/ec2/pk-*.pem)
 export EC2_CERT=$(echo $HOME/.keys/ec2/cert-*.pem)
