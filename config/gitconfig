@@ -77,6 +77,9 @@
     amend = commit --amend -C HEAD
     undo = reset --soft HEAD^
 
+    ; Ignore
+    remove_ignore rm --cached `git ls-files -i --exclude-from=.gitignore`
+
 [branch "master"]
     remote = origin
     merge = refs/heads/master
