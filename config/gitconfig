@@ -78,7 +78,7 @@
     undo = reset --soft HEAD^
 
     ; Ignore
-    remove_ignore rm --cached `git ls-files -i --exclude-from=.gitignore`
+    removeignore = rm --cached `git ls-files -i --exclude-from=.gitignore`
 
 [branch "master"]
     remote = origin
