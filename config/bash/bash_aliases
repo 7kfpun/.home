@@ -1,4 +1,12 @@
 # Common
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+alias cd.='cd ..'
+alias cd..='cd ..'
+
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
@@ -8,8 +16,6 @@ alias tmp='cd /tmp'
 # others
 alias vi='vim'
 alias sim='sudo vim'
-alias ..="cd .."
-alias vi='vim'
 
 alias ls='ls $LS_OPTIONS -Fh'
 alias ll='ls $LS_OPTIONS -Fhl'
