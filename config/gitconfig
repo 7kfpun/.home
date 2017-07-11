@@ -21,6 +21,9 @@
 [diff]
     tool = vimdiff
 
+[difftool]
+    prompt = false
+
 [color]
     ui = auto
     branch = auto
@@ -51,6 +54,8 @@
     co = checkout
     db = branch -D
     fo = fetch origin
+    fot = git fetch origin --prune --tags
+    po = remote prune origin
     mb = branch -m
     mg = merge --no-ff
     pd = pull origin develop
@@ -65,9 +70,9 @@
     ll = log --pretty=format:"%C(green)%ar\\ %C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn#%cE]" --decorate --numstat
     lg = log -p --stat
     d = diff --word-diff
-    dc = diff --cached
-    t = log --graph --decorate --pretty=oneline --abbrev-commit
-    tt = log --graph --decorate --pretty=oneline --all
+    dc = diff --staged
+    tt = log --graph --decorate --oneline --abbrev-commit
+    vd = difftool
 
     ; Git flow support
     hotfix = flow hotfix
