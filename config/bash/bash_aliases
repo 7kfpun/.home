@@ -1,3 +1,7 @@
+# ---------------
+# $HOME/.bash_aliases for bash-3.0 (or later)
+# By kf 7kfpun@gmail.com
+
 # Common
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -13,9 +17,10 @@ alias mv='mv -i'
 alias less='less -r'
 alias tmp='cd /tmp'
 
-# others
+# Others
 alias vi='vim'
 alias sim='sudo vim'
+alias cat='ccat --bg=dark'
 
 alias ls='ls $LS_OPTIONS -Fh'
 alias ll='ls $LS_OPTIONS -Fhl'
@@ -25,8 +30,10 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-# tmux
+alias tt='find ${1:-.} -print | sed -e "s;[^/]*/;|____;g;s;____|; |;g"'
+
+# Tmux
 alias tmux='tmux -2'
 
-# python
-alias activate='source .env/bin/activate'
+alias npm=yarn
+alias nnpm=npm

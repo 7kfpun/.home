@@ -37,7 +37,7 @@
 
 [alias]
     ; Show aliases
-    alias = !git config --get-regexp alias | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\\1\\t => \\2/' | sort
+    alias = !git config --get-regexp alias | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\\1 => \\2/' | sort
 
     ; Quickly add a file/dir to .gitignore
     ignore=!([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
