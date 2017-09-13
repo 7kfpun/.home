@@ -6,10 +6,10 @@
     autocrlf = input
     editor = vim
     excludesfile = ~/.home/config/.gitignore
-    filemode=true
+    filemode = true
     pager = /usr/bin/less
-    sharedRepository=group
-    whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    sharedRepository = group
+    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 
 [merge]
     tool = lvimdiff
@@ -70,7 +70,7 @@
     d = diff --word-diff
     dc = diff --staged
     t = log --graph --decorate --oneline --all
-    tt = log --graph --decorate --oneline --all --pretty=format:'%C(yellow)%h %C(green)(%cr)%C(auto)%d %s %C(cyan)@%an'
+    tt = log --graph --decorate --oneline --all --pretty=format:'%C(yellow)%h %C(green)(%cr)%C(auto)%d %C(white)%s %C(cyan)@%an'
 
     ; Git flow support
     hotfix = flow hotfix
