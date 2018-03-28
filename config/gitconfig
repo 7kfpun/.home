@@ -59,7 +59,7 @@
     ph = push --tags
     s = status -sb
     pr = pull --rebase
-    new-tag-push = "!f() { git tag -f \"$1\" && git push origin :refs/tags/\"$1\" && git push origin refs/tags/\"$1\"; }; f"
+    publish = "!f() { git tag -f \"$1\" && git push origin :refs/tags/\"$1\" && git push origin refs/tags/\"$1\"; }; f"
 
     ; View logs and diff
     last = log -1 --stat
