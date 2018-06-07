@@ -35,5 +35,3 @@ alias tt='find ${1:-.} -print | sed -e "s;[^/]*/;|____;g;s;____|; |;g"'
 # Tmux
 alias tmux='tmux -2'
 
-alias npm=yarn
-alias nnpm=npm
